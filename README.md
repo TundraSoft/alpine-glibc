@@ -12,7 +12,7 @@ This version has the GLIBC package installed.
 
 ## Installed Components
 
-### [`S6`]([!https://github.com/just-containers/s6-overlay#the-docker-way "S6 Github link") - 3.1.0.0
+### [`S6`]([!https://github.com/just-containers/s6-overlay#the-docker-way "S6 Github link") - 3.1.0.1
 
 The s6-overlay-builder project is a series of init scripts and utilities to ease creating Docker images using s6 as a process supervisor.
 
@@ -47,7 +47,7 @@ See s6 documentation for other s6 environment arguments
 ### Building
 
 ```docker
-docker build --no-cache --build-arg ALPINE_VERSION=3.15.1 --build-arg S6_OVERLAY_VERSION=3.1.0.0 -t tundrasoft/alpine-glibc .
+docker build --no-cache --build-arg ALPINE_VERSION=3.15.1 --build-arg S6_OVERLAY_VERSION=3.1.0.1 -t tundrasoft/alpine-glibc .
 ```
 
 ### Running

@@ -2,7 +2,7 @@ ARG ALPINE_VERSION
 FROM alpine:${ALPINE_VERSION}
 LABEL maintainer="Abhinav A V <abhai2k@gmail.com>"
 
-ARG S6_OVERLAY_VERSION=\
+ARG S6_OVERLAY_VERSION
 ENV PUID=1000 \
     PGID=1000 \ 
     UNAME="tundrasoft" \

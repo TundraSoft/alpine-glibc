@@ -47,7 +47,7 @@ See s6 documentation for other s6 environment arguments
 ### Building
 
 ```docker
-docker build --no-cache --build-arg ALPINE_VERSION=3.17.1 --build-arg S6_OVERLAY_VERSION=3.1.3.0 -t tundrasoft/alpine .
+docker build --no-cache --build-arg ALPINE_VERSION=3.17.1 --build-arg S6_OVERLAY_VERSION=3.1.3.0 -t tundrasoft/alpine-glibc .
 ```
 
 ### Running

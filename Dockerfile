@@ -11,7 +11,7 @@ ENV PUID=1000 \
     TZ="UTC" \
     S6_GLOBAL_PATH="/command:/usr/bin:/bin:/usr/sbin" \
     S6_CMD_WAIT_FOR_SERVICES_MAXTIME=5000 \
-    GLIBC_VERSION=2.35-r0
+    GLIBC_VERSION=2.34-r0
 
 RUN set -eux; \ 
     apk upgrade --update --no-cache; \

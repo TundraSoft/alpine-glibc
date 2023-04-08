@@ -38,11 +38,9 @@ jobs:
         name: Get Alpine Versions
         run: |
           # Get the last 10 Alpine tags
-          TAGS=$(git ls-remote --tags https://github.com/alpinelinux/alpine-dockerfiles.git | awk '{print $2}' | cut -d"/" -f3 | grep "^v[0-9]" | sort -V -r | head -n 10)
-          # Filter out the last 4 Alpine versions
-          LAST_4_VERSIONS=$(echo "$TAGS" | head -n 4)
+          ALPINE_VERSIONS=$(curl -s https://cz.alpinelinux.org/alpine/ | grep -oP '(?<=v)[^/]+(?=/")' | sort -V | tail -n 4 | tac)
           # Display the last 4 Alpine versions as output
-          echo "::set-output name=versions::$LAST_4_VERSIONS"
+          echo "::set-output name=versions::$ALPINE_VERSIONS"
 
   docker:
     needs: [get-alpine-versions]

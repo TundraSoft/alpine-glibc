@@ -12,22 +12,6 @@ env:
   LATEST_TAG: 3.17.1
   S6_VERSION: 3.1.3.0
 
-# get-versions:
-#     runs-on: ubuntu-latest
-#     steps:
-#     - name: Checkout Repository
-#       uses: actions/checkout@v2
-#     - name: Get Alpine Versions
-#       run: |
-#         # Get the last 10 Alpine tags
-#         TAGS=$(git ls-remote --tags https://github.com/alpinelinux/alpine-dockerfiles.git | awk '{print $2}' | cut -d"/" -f3 | grep "^v[0-9]" | sort -V -r | head -n 10)
-#         # Filter out the last 4 Alpine versions
-#         LAST_4_VERSIONS=$(echo "$TAGS" | head -n 4)
-#         # Display the last 4 Alpine versions as output
-#         echo "::set-output name=last_4_versions::$LAST_4_VERSIONS"
-    
-#     - name: Display Output
-#       run: echo "Last 4 Alpine versions are ${{ steps.get-versions.outputs.last_4_versions }}"
 jobs:
   get-versions:
     runs-on: ubuntu-latest
@@ -48,7 +32,7 @@ jobs:
         name: Get S6 Versions
         id: s6-versions
         run: |
-          VERSIONS=$(curl -s https://api.github.com/repos/just-containers/s6-overlay/releases | jq -r '[].[].tag_name]' | grep -vE "rc|alpha" | sort -V | tail -n 3 | tac)
+          VERSIONS=$(curl -s https://api.github.com/repos/just-containers/s6-overlay/releases | jq -r '[.[].tag_name]' | grep -vE "rc|alpha" | sort -V | tail -n 3 | tac)
           echo "$VERSIONS"
           echo "::set-output name=versions::$VERSIONS"
 

@@ -12,7 +12,7 @@ This version has the GLIBC package installed.
 
 ## Installed Components
 
-### [`S6`]([!https://github.com/just-containers/s6-overlay#the-docker-way "S6 Github link") - 3.1.0.1
+### [`S6`]([!https://github.com/just-containers/s6-overlay#the-docker-way "S6 Github link")
 
 The s6-overlay-builder project is a series of init scripts and utilities to ease creating Docker images using s6 as a process supervisor.
 

@@ -42,7 +42,7 @@ jobs:
     strategy:
       matrix:
         # alpine-version: [3.17.1, 3.16.3, 3.16, 3.15.6, 3.15, 3.14.8, 3.14]
-        alpine-version: ${{ fromJson(needs.get-versions.outputs.alpine-versions) }}
+        alpine-version: $(curl -s https://cz.alpinelinux.org/alpine/ | grep -oP '(?<=v)[^/]+(?=/")' | sort -V | tail -n 4 | tac)
         s6-versions: ${{ fromJson(needs.get-versions.outputs.s6-versions) }}
 
     steps:

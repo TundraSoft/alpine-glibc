@@ -24,18 +24,16 @@ jobs:
         id: alpine-versions
         run: |
           # Get the last 10 Alpine tags
-          ALPINE_VERSIONS=$(curl -s https://cz.alpinelinux.org/alpine/ | grep -oP '(?<=v)[^/]+(?=/")' | sort -V | tail -n 4 | tac)
+          ALPINE_VERSIONS=$(curl -s https://cz.alpinelinux.org/alpine/ | grep -oP '(?<=v)[^/]+(?=/")' | sort -V | tail -n 4 | tac | jq -Rcn '[inputs]')
           # Display the last 4 Alpine versions as output
-          echo "$ALPINE_VERSIONS"
-          echo "::set-output name=versions::[${ALPINE_VERSIONS// /,}]"
+          echo "::set-output name=versions::${ALPINE_VERSIONS}"
       - 
         name: Get S6 Versions
         id: s6-versions
         run: |
-          VERSIONS=$(curl -s https://api.github.com/repos/just-containers/s6-overlay/releases | jq -r '[.[].tag_name]' | grep -vE "rc|alpha" | sort -V | tail -n 3 | tac)
-          echo "$VERSIONS"
+          VERSIONS=$(curl -s https://api.github.com/repos/just-containers/s6-overlay/releases | jq -r '.[].tag_name' | grep -vE "rc|alpha" | sort -V | tail -n 5 | tac | sed 's/v//g' | jq -Rcn '[inputs]')
           echo "::set-output name=versions::$VERSIONS"
-
+          
   docker:
     needs: [get-versions]
     runs-on: ubuntu-latest

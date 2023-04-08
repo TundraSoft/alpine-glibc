@@ -39,6 +39,8 @@ RUN set -eux; \
 
 ADD /rootfs /
 
+USER ${UNAME}
+
 # Init
 ENTRYPOINT [ "/init" ]
 

@@ -53,7 +53,7 @@ jobs:
           echo "::set-output name=versions::$VERSIONS"
 
   docker:
-    needs: [get-alpine-versions]
+    needs: [get-versions]
     runs-on: ubuntu-latest
     strategy:
       matrix:

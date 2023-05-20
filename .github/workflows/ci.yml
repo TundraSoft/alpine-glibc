@@ -83,7 +83,7 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           context: .
-          platforms: linux/amd64,linux/arm/v7,darwin/amd64,linux/arm64
+          platforms: linux/amd64,linux/arm/v7,linux/arm64
           build-args: |
             ALPINE_VERSION=${{ matrix.alpine-version }}
             S6_OVERLAY_VERSION=${{ matrix.s6-version }}
